@@ -30,9 +30,9 @@ exports.addBook = async (req, res) => {
 // Fetch All Books
 exports.fetchBooks = async (req, res) => {
     try {
-        const allBooks = await bookService.fetchBooks();
+        const allBooks = await bookService.getFetchBooks();
 
-        res.json(succ)
+        res.json(successResponse(StatusCodes.CREATED, false, MSG.BOOK_FETCHED, allBooks))
     } catch (error) {
         console.log("Server Error : ", error);
         res.json(errorResponse(StatusCodes.BAD_REQUEST, true, MSG.SERVER_ERROR));
