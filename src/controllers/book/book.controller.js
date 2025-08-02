@@ -7,7 +7,7 @@ const moment = require("moment")
 const bookService = new BookServices();
 
 // Add New Book
-export const addBook = async (req, res) => {
+exports.addBook = async (req, res) => {
     try {
 
         const existBook = await bookService.getSingleBook({ isbn: req.body.isbn, isDelete: false });
@@ -28,7 +28,7 @@ export const addBook = async (req, res) => {
 }
 
 // Fetch All Books
-export const fetchBooks = async (req, res) => {
+exports.fetchBooks = async (req, res) => {
     try {
         const allBooks = await bookService.getFetchBooks();
 
@@ -40,7 +40,7 @@ export const fetchBooks = async (req, res) => {
 }
 
 // Fetch Single Book
-export const fetchSingleBook = async (req, res) => {
+exports.fetchSingleBook = async (req, res) => {
     try {
 
     } catch (error) {
@@ -50,7 +50,7 @@ export const fetchSingleBook = async (req, res) => {
 }
 
 // Update Book
-export const updateBook = async (req, res) => {
+exports.updateBook = async (req, res) => {
     try {
 
     } catch (error) {
@@ -60,7 +60,7 @@ export const updateBook = async (req, res) => {
 }
 
 // Delete Book
-export const deleteBook = async (req, res) => {
+exports.deleteBook = async (req, res) => {
     try {
 
     } catch (error) {

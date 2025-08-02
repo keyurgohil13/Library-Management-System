@@ -8,7 +8,7 @@ const bookSchema = new mongoose.Schema({
         require: true
     },
     category: {
-        type: mongoose.Schema.ObjectId.type,
+        type: mongoose.Schema.Types.ObjectId,
         ref: "category"
     },
     publisher: String,
@@ -22,12 +22,10 @@ const bookSchema = new mongoose.Schema({
     is_active: {
         type: Boolean,
         default: true,
-        require: true,
     },
     isDelete: {
         type: Boolean,
         default: false,
-        require: true,
     }
 })
 
