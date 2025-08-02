@@ -1,7 +1,7 @@
-import { StatusCodes } from "http-status-codes";
-import BookServices from "../../services/book/book.service"
-import { errorResponse, successResponse } from "../../utils/responseFormat";
-import { MSG } from "../../utils/messages";
+const { StatusCodes } = require("http-status-codes");
+const BookServices = require("../../services/book/book.service");
+const { errorResponse, successResponse } = require("../../utils/responseFormat");
+const { MSG } = require("../../utils/messages");
 
 const moment = require("moment")
 const bookService = BookServices();
@@ -20,7 +20,7 @@ export const addBook = async (req, res) => {
 
         let newBook = await bookService.addBook(req.body);
 
-        return res.json(successResponse(StatusCodes.CREATED, false, MSG.BOOK_ADDED, newBook));
+        res.json(successResponse(StatusCodes.CREATED, false, MSG.BOOK_ADDED, newBook));
     } catch (error) {
         console.log("Server Error : ", error);
         res.json(errorResponse(StatusCodes.BAD_REQUEST, true, MSG.SERVER_ERROR));
@@ -30,7 +30,9 @@ export const addBook = async (req, res) => {
 // Fetch All Books
 export const fetchBooks = async (req, res) => {
     try {
+        const allBooks = await bookService.fetchBooks();
 
+        res.json(succ)
     } catch (error) {
         console.log("Server Error : ", error);
         res.json(errorResponse(StatusCodes.BAD_REQUEST, true, MSG.SERVER_ERROR));
