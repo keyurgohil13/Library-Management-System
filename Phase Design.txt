@@ -1,0 +1,303 @@
+Phase 1 - User Management
+Tasks
+1 - Use Registration
+Sub Tasks
+(Database / Schema)
+1 - Users Table
+2 - Approval
+3 - Test
+(UI/UX) (Web)
+1 - User Registration Screen
+2 - Approval
+3 - Validation (if needed)
+4 - Test
+
+    (UI/UX) (Mobile)
+    1 - User Registration Screen
+    2 - Approval
+    3 - Validation (if needed)
+    4 - Test
+
+    (Back-End)
+    1 - User Registration (Post)
+    2 - Testing
+    3 - Approval
+    4 - All Users Info (Get)
+    5 - Testing
+    6 - Approval
+    7 - Single Users Info (Get)
+    8 - Testing
+    9 - Approval
+    10 - Update User (Patch)
+    11 - Testing
+    12 - Approval
+    13 - Delete a User (Delete)
+    14 - Testing
+    15 - Approval
+
+    (Integration - Web)
+    1 - User Registration
+    2 - Testing
+    3 - Approval
+
+    (Integration - Mobile)
+    1 - User Registration
+    2 - Testing
+    3 - Approval
+
+2 - Login
+(Back-End)
+1 - Login API (Post)
+2 - Session / Token Handling
+3 - Testing
+4 - Approval
+
+    (UI/UX) (Web)
+    1 - Login Screen
+    2 - Validation
+    3 - Testing
+    4 - Approval
+
+    (UI/UX) (Mobile)
+    1 - Login Screen
+    2 - Validation
+    3 - Testing
+    4 - Approval
+
+    (Integration - Web)
+    1 - Login Functionality
+    2 - Testing
+    3 - Approval
+
+    (Integration - Mobile)
+    1 - Login Functionality
+    2 - Testing
+    3 - Approval
+
+3 - Forgot Password
+(Back-End)
+1 - Forgot Password API (Post)
+2 - Email OTP or Reset Link Logic
+3 - Testing
+4 - Approval
+
+    (UI/UX) (Web)
+    1 - Forgot Password Screen
+    2 - Validation
+    3 - OTP / Reset UI
+    4 - Testing
+    5 - Approval
+
+    (UI/UX) (Mobile)
+    1 - Forgot Password Screen
+    2 - Validation
+    3 - OTP / Reset UI
+    4 - Testing
+    5 - Approval
+
+    (Integration - Web)
+    1 - Forgot Password Flow
+    2 - Testing
+    3 - Approval
+
+    (Integration - Mobile)
+    1 - Forgot Password Flow
+    2 - Testing
+    3 - Approval
+
+4 - Change Password
+(Back-End)
+1 - Change Password API (Patch)
+2 - Old Password Verification
+3 - Testing
+4 - Approval
+
+    (UI/UX) (Web)
+    1 - Change Password Screen
+    2 - Validation
+    3 - Testing
+    4 - Approval
+
+    (UI/UX) (Mobile)
+    1 - Change Password Screen
+    2 - Validation
+    3 - Testing
+    4 - Approval
+
+    (Integration - Web)
+    1 - Change Password Flow
+    2 - Testing
+    3 - Approval
+
+    (Integration - Mobile)
+    1 - Change Password Flow
+    2 - Testing
+    3 - Approval
+
+5 - Change Email
+(Back-End)
+1 - Change Email API (Patch)
+2 - OTP Verification (if required)
+3 - Testing
+4 - Approval
+
+    (UI/UX) (Web)
+    1 - Change Email Screen
+    2 - Validation
+    3 - OTP Flow (if needed)
+    4 - Testing
+    5 - Approval
+
+    (UI/UX) (Mobile)
+    1 - Change Email Screen
+    2 - Validation
+    3 - OTP Flow (if needed)
+    4 - Testing
+    5 - Approval
+
+    (Integration - Web)
+    1 - Change Email Flow
+    2 - Testing
+    3 - Approval
+
+    (Integration - Mobile)
+    1 - Change Email Flow
+    2 - Testing
+    3 - Approval
+
+6 - Change Mobile
+(Back-End)
+1 - Change Mobile API (Patch)
+2 - OTP Verification
+3 - Testing
+4 - Approval
+
+    (UI/UX) (Web)
+    1 - Change Mobile Screen
+    2 - Validation
+    3 - OTP Flow
+    4 - Testing
+    5 - Approval
+
+    (UI/UX) (Mobile)
+    1 - Change Mobile Screen
+    2 - Validation
+    3 - OTP Flow
+    4 - Testing
+    5 - Approval
+
+    (Integration - Web)
+    1 - Change Mobile Flow
+    2 - Testing
+    3 - Approval
+
+    (Integration - Mobile)
+    1 - Change Mobile Flow
+    2 - Testing
+    3 - Approval
+
+
+
+Phase-2 Book Management
+
+1 - Book Catagories
+    Sub Tasks
+    (Database / Schema)
+    1 - Books Catagories Table
+    2 - Approval
+    3 - Test
+
+    (UI/UX) (Web)
+    1 - Book Catagory Add Screen
+    2 - Approval
+    3 - Test
+
+    (Back-End)
+    1 - Book Catagory Add (Post)
+    2 - Testing
+    3 - Approval
+    4 - Get Book Catagories (Get)
+    5 - Testing
+    6 - Approval
+    7 - Single Book Catagory Info (Get)
+    8 - Testing
+    9 - Approval
+    10 - Update Book Catagory (Patch)
+    11 - Testing
+    12 - Approval
+    13 - Delete a Book Catagory (Delete)
+    14 - Testing
+    15 - Approval
+
+    (Integration - Web)
+    1 - Book Catagory
+    2 - Testing
+    3 - Approval
+
+2 - Book Add
+    Sub Tasks
+    (Database / Schema)
+    1 - Books Table
+    2 - Approval
+    3 - Test
+
+    (UI/UX) (Web)
+    1 - Book Add Screen
+    2 - Approval
+    3 - Test
+
+    (Back-End)
+    1 - Book Add (Post)
+    2 - Testing
+    3 - Approval
+    4 - Get Books (Get)
+    5 - Testing
+    6 - Approval
+    7 - Single Book Info (Get)
+    8 - Testing
+    9 - Approval
+    10 - Update Book (Patch)
+    11 - Testing
+    12 - Approval
+    13 - Delete a Book (Delete)
+    14 - Testing
+    15 - Approval
+
+    (Integration - Web)
+    1 - Book Add
+    2 - Testing
+    3 - Approval
+
+Phase-3 Issue/Return Books 
+
+1 - Issue Book
+    Sub Tasks
+    (Database / Schema)
+    1 - Issue-Return Table
+    2 - Approval
+    3 - Test
+
+    (UI/UX) (Web)
+    1 - Book Issue Screen
+    2 - Approval
+    3 - Test
+
+    (Back-End)
+    1 - Add Book Issue Detail (Post)
+    2 - Testing
+    3 - Approval
+    4 - Get All Issued Books Detail (Get)
+    5 - Testing
+    6 - Approval
+    7 - Get Single Issued Book Detail (Get)
+    8 - Testing
+    9 - Approval
+    13 - Delete a Book Catagory (Delete)
+    14 - Testing
+    15 - Approval
+
+    (Integration - Web)
+    1 - Book Catagory
+    2 - Testing
+    3 - Approval
+
