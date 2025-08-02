@@ -8,17 +8,17 @@ const { StatusCodes } = require("http-status-codes");
 
 exports.registerUser = async (req, res) => {
   try {
-    
+
     const existUser = await userServices.getSingleUser({ email: req.body.email, isDelete: false });
-    if(existUser){
-        return res.json(errorResponse(StatusCodes.BAD_REQUEST, true, 'User is Already Exist'));
+    if (existUser) {
+      return res.json(errorResponse(StatusCodes.BAD_REQUEST, true, 'User is Already Exist'));
     }
 
     let hashPassword = await bcrypt.hash(req.body.password, 10);
     req.body.created_at = moment(Date.now()).format("DD-MM-YYYY");
     req.body.updated_at = moment(Date.now()).format("DD-MM-YYYY");
     req.body.membership_date = moment(Date.now()).format("DD-MM-YYYY");
-    let newUser = await userServices.registerUser({...req.body, password: hashPassword});
+    let newUser = await userServices.registerUser({ ...req.body, password: hashPassword });
 
     return res.json(successResponse(StatusCodes.CREATED, false, 'New User Regiter', newUser))
 
