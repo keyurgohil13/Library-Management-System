@@ -8,7 +8,12 @@ const { StatusCodes } = require("http-status-codes");
 const { MSG } = require("../../utils/messages");
 
 exports.registerUser = async (req, res) => {
+<<<<<<< HEAD
   try { 
+=======
+  try {
+
+>>>>>>> 5af7a528b5976915f55d0b5784d9a24356ee6860
     const existUser = await userServices.getSingleUser({ email: req.body.email, isDelete: false });
     if(existUser){
         return res.json(errorResponse(StatusCodes.BAD_REQUEST, true, MSG.USER_EXIST));
@@ -18,7 +23,7 @@ exports.registerUser = async (req, res) => {
     req.body.created_at = moment(Date.now()).format("DD-MM-YYYY");
     req.body.updated_at = moment(Date.now()).format("DD-MM-YYYY");
     req.body.membership_date = moment(Date.now()).format("DD-MM-YYYY");
-    let newUser = await userServices.registerUser({...req.body, password: hashPassword});
+    let newUser = await userServices.registerUser({ ...req.body, password: hashPassword });
 
     return res.json(successResponse(StatusCodes.CREATED, false, MSG.USER_CREATED, newUser))
 
