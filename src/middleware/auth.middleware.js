@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken');
 
-const authMiddleware = (req, res, next) => {
+exports.authMiddleware = (req, res, next) => {
     // Get token from header
     const authHeader = req.headers['authorization'];
     const token = authHeader && authHeader.split(' ')[1]; // Bearer <token>
@@ -19,4 +19,18 @@ const authMiddleware = (req, res, next) => {
     }
 };
 
-module.exports = authMiddleware;
+exports.authRoleMiddleware = (...allowedRoles) => {
+    return (req, res, next) => {
+        if (!req.user || !req.user.role) {
+            return res.status(403).json({ message: 'Role missing in token' });
+        }
+
+        if (!allowedRoles.includes(req.user.role)) {
+            return res.status(403).json({ message: 'Access denied: Insufficient role' });
+        }
+
+        next();
+    };
+};
+
+
