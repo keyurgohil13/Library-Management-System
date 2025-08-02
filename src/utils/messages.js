@@ -7,6 +7,7 @@ module.exports.MSG = {
 
     // User
     USER_CREATED: 'User registered successfully',
+    USER_EXIST: 'User Already Exist',
     USER_UPDATED: 'User updated successfully',
     USER_DELETED: 'User deleted successfully',
     USER_NOT_FOUND: 'User not found',

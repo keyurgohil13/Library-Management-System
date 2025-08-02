@@ -12,7 +12,7 @@ exports.registerUser = async (req, res) => {
     
     const existUser = await userServices.getSingleUser({ email: req.body.email, isDelete: false });
     if(existUser){
-        return res.json(errorResponse(StatusCodes.BAD_REQUEST, true, 'User is Already Exist'));
+        return res.json(errorResponse(StatusCodes.BAD_REQUEST, true, MSG.USER_EXIST));
     }
 
     let hashPassword = await bcrypt.hash(req.body.password, 10);
@@ -21,10 +21,10 @@ exports.registerUser = async (req, res) => {
     req.body.membership_date = moment(Date.now()).format("DD-MM-YYYY");
     let newUser = await userServices.registerUser({...req.body, password: hashPassword});
 
-    return res.json(successResponse(StatusCodes.CREATED, false, MSG.REGISTER_USER, newUser))
+    return res.json(successResponse(StatusCodes.CREATED, false, MSG.USER_CREATED, newUser))
 
   } catch (error) {
     console.log("Server Error: ", error);
-    return res.json(errorResponse(StatusCodes.BAD_REQUEST, true, MSG.INSTER_SERVER_ERROR));
+    return res.json(errorResponse(StatusCodes.BAD_REQUEST, true, MSG.SERVER_ERROR));
   }
 };
