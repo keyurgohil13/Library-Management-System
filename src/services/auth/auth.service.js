@@ -23,4 +23,14 @@ module.exports = class UserServices {
             return errorResponse(StatusCodes.INTERNAL_SERVER_ERROR, true, MSG.SERVER_ERROR);
         }
     };
+    
+    // User Update
+    async updateUser(id, body) {
+        try {
+            return await User.findByIdAndUpdate(id, body, {new: true});
+        } catch (error) {
+            console.log(error);
+            return errorResponse(StatusCodes.INTERNAL_SERVER_ERROR, true, MSG.SERVER_ERROR);
+        }
+    };
 }

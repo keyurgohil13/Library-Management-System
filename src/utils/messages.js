@@ -11,6 +11,8 @@ module.exports.MSG = {
     USER_UPDATED: 'User updated successfully',
     USER_DELETED: 'User deleted successfully',
     USER_NOT_FOUND: 'User not found',
+    PASSWORD_NOT_MATCH: 'Password is not Matched',
+    PASSWORD_CHANGED: 'Password Changed Success',
 
     // Validation
     VALIDATION_ERROR: 'Validation failed',
