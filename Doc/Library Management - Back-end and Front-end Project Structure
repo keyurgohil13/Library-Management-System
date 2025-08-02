@@ -1,0 +1,498 @@
+--------
+Back-end
+--------
+
+
+library-management-backend/
+├── src/
+│   ├── config/
+│   │   ├── database.js              # Database connection configuration
+│   │   ├── redis.js                 # Redis configuration for sessions
+│   │   ├── email.js                 # Email service configuration
+│   │   ├── cloudinary.js            # Image upload configuration
+│   │   └── index.js                 # Main config export
+│   │
+│   ├── controllers/
+│   │   ├── auth/
+│   │   │   ├── authController.js    # Login, logout, register
+│   │   │   ├── passwordController.js # Password reset, change
+│   │   │   └── profileController.js # User profile management
+│   │   ├── admin/
+│   │   │   ├── userController.js    # Admin user management
+│   │   │   ├── systemController.js  # System settings
+│   │   │   └── reportsController.js # Admin reports
+│   │   ├── books/
+│   │   │   ├── bookController.js    # CRUD operations for books
+│   │   │   ├── categoryController.js # Category management
+│   │   │   └── searchController.js  # Book search and filters
+│   │   ├── members/
+│   │   │   ├── memberController.js  # Member management
+│   │   │   └── memberHistoryController.js # Borrowing history
+│   │   ├── transactions/
+│   │   │   ├── issueController.js   # Book issue/checkout
+│   │   │   ├── returnController.js  # Book return
+│   │   │   └── reservationController.js # Book reservations
+│   │   ├── fines/
+│   │   │   └── fineController.js    # Fine management
+│   │   └── reports/
+│   │       ├── dashboardController.js # Dashboard data
+│   │       ├── popularBooksController.js
+│   │       ├── overdueController.js
+│   │       └── analyticsController.js
+│   │
+│   ├── middleware/
+│   │   ├── auth.js                  # Authentication middleware
+│   │   ├── rbac.js                  # Role-based access control
+│   │   ├── validation.js            # Request validation
+│   │   ├── errorHandler.js          # Global error handling
+│   │   ├── rateLimiter.js           # Rate limiting
+│   │   ├── cors.js                  # CORS configuration
+│   │   ├── logger.js                # Request logging
+│   │   └── upload.js                # File upload handling
+│   │
+│   ├── models/
+│   │   ├── User.js                  # User model
+│   │   ├── Book.js                  # Book model
+│   │   ├── Category.js              # Category model
+│   │   ├── Transaction.js           # Transaction model
+│   │   ├── Fine.js                  # Fine model
+│   │   ├── Reservation.js           # Reservation model
+│   │   └── associations.js          # Model associations
+│   │
+│   ├── routes/
+│   │   ├── auth/
+│   │   │   ├── authRoutes.js        # Authentication routes
+│   │   │   └── profileRoutes.js     # Profile management routes
+│   │   ├── admin/
+│   │   │   ├── userRoutes.js        # Admin user management
+│   │   │   ├── systemRoutes.js      # System settings
+│   │   │   └── adminReportsRoutes.js
+│   │   ├── books/
+│   │   │   ├── bookRoutes.js        # Book CRUD routes
+│   │   │   ├── categoryRoutes.js    # Category routes
+│   │   │   └── searchRoutes.js      # Search routes
+│   │   ├── members/
+│   │   │   └── memberRoutes.js      # Member management routes
+│   │   ├── transactions/
+│   │   │   ├── issueRoutes.js       # Book issue routes
+│   │   │   ├── returnRoutes.js      # Book return routes
+│   │   │   └── reservationRoutes.js # Reservation routes
+│   │   ├── fines/
+│   │   │   └── fineRoutes.js        # Fine management routes
+│   │   ├── reports/
+│   │   │   └── reportRoutes.js      # Reports and analytics
+│   │   └── index.js                 # Route aggregation
+│   │
+│   ├── services/
+│   │   ├── auth/
+│   │   │   ├── authService.js       # Authentication logic
+│   │   │   ├── sessionService.js    # Session management
+│   │   │   └── passwordService.js   # Password operations
+│   │   ├── books/
+│   │   │   ├── bookService.js       # Book business logic
+│   │   │   ├── inventoryService.js  # Inventory management
+│   │   │   └── searchService.js     # Search algorithms
+│   │   ├── members/
+│   │   │   └── memberService.js     # Member business logic
+│   │   ├── transactions/
+│   │   │   ├── issueService.js      # Issue business logic
+│   │   │   ├── returnService.js     # Return business logic
+│   │   │   └── reservationService.js # Reservation logic
+│   │   ├── fines/
+│   │   │   └── fineService.js       # Fine calculation & management
+│   │   ├── reports/
+│   │   │   └── reportService.js     # Report generation
+│   │   ├── email/
+│   │   │   └── emailService.js      # Email notifications
+│   │   └── upload/
+│   │       └── uploadService.js     # File upload service
+│   │
+│   ├── utils/
+│   │   ├── constants.js             # Application constants
+│   │   ├── helpers.js               # Helper functions
+│   │   ├── validators.js            # Validation schemas
+│   │   ├── encryption.js            # Password hashing utilities
+│   │   ├── dateUtils.js             # Date manipulation utilities
+│   │   ├── pagination.js            # Pagination utilities
+│   │   └── responseFormatter.js     # API response formatting
+│   │
+│   ├── database/
+│   │   ├── migrations/
+│   │   │   ├── 001_create_users.js
+│   │   │   ├── 002_create_categories.js
+│   │   │   ├── 003_create_books.js
+│   │   │   ├── 004_create_transactions.js
+│   │   │   ├── 005_create_fines.js
+│   │   │   └── 006_create_reservations.js
+│   │   ├── seeders/
+│   │   │   ├── 001_admin_user.js
+│   │   │   ├── 002_categories.js
+│   │   │   ├── 003_sample_books.js
+│   │   │   └── 004_sample_members.js
+│   │   └── connection.js            # Database connection setup
+│   │
+│   └── app.js                       # Express app configuration
+│
+├── tests/
+│   ├── unit/
+│   │   ├── controllers/
+│   │   ├── services/
+│   │   ├── models/
+│   │   └── utils/
+│   ├── integration/
+│   │   ├── auth.test.js
+│   │   ├── books.test.js
+│   │   ├── members.test.js
+│   │   └── transactions.test.js
+│   ├── fixtures/
+│   │   └── testData.js
+│   └── setup.js                     # Test environment setup
+│
+├── docs/
+│   ├── api/
+│   │   ├── swagger.yaml             # API documentation
+│   │   └── postman_collection.json
+│   ├── database/
+│   │   └── erd.md                   # Database schema documentation
+│   └── deployment/
+│       └── deployment_guide.md
+│
+├── logs/                            # Application logs
+├── uploads/                         # Uploaded files
+├── .env.example                     # Environment variables template
+├── .env                            # Environment variables (gitignored)
+├── .gitignore
+├── package.json
+├── package-lock.json
+├── server.js                        # Server entry point
+├── jest.config.js                   # Jest testing configuration
+├── nodemon.json                     # Nodemon configuration
+└── README.md
+
+
+--------
+Front-end
+--------
+
+library-management-frontend/
+├── public/
+│   ├── index.html
+│   ├── manifest.json
+│   ├── favicon.ico
+│   └── images/
+│       ├── logo.png
+│       └── default-book.png
+│
+├── src/
+│   ├── components/
+│   │   ├── common/
+│   │   │   ├── Header/
+│   │   │   │   ├── Header.jsx
+│   │   │   │   ├── Header.module.css
+│   │   │   │   └── index.js
+│   │   │   ├── Footer/
+│   │   │   │   ├── Footer.jsx
+│   │   │   │   ├── Footer.module.css
+│   │   │   │   └── index.js
+│   │   │   ├── Sidebar/
+│   │   │   │   ├── Sidebar.jsx
+│   │   │   │   ├── Sidebar.module.css
+│   │   │   │   └── index.js
+│   │   │   ├── Loading/
+│   │   │   │   ├── Loading.jsx
+│   │   │   │   ├── Loading.module.css
+│   │   │   │   └── index.js
+│   │   │   ├── Modal/
+│   │   │   │   ├── Modal.jsx
+│   │   │   │   ├── Modal.module.css
+│   │   │   │   └── index.js
+│   │   │   ├── Table/
+│   │   │   │   ├── Table.jsx
+│   │   │   │   ├── Table.module.css
+│   │   │   │   └── index.js
+│   │   │   ├── Pagination/
+│   │   │   │   ├── Pagination.jsx
+│   │   │   │   ├── Pagination.module.css
+│   │   │   │   └── index.js
+│   │   │   ├── SearchBar/
+│   │   │   │   ├── SearchBar.jsx
+│   │   │   │   ├── SearchBar.module.css
+│   │   │   │   └── index.js
+│   │   │   └── ProtectedRoute/
+│   │   │       ├── ProtectedRoute.jsx
+│   │   │       └── index.js
+│   │   │
+│   │   ├── forms/
+│   │   │   ├── Input/
+│   │   │   │   ├── Input.jsx
+│   │   │   │   ├── Input.module.css
+│   │   │   │   └── index.js
+│   │   │   ├── Select/
+│   │   │   │   ├── Select.jsx
+│   │   │   │   ├── Select.module.css
+│   │   │   │   └── index.js
+│   │   │   ├── Button/
+│   │   │   │   ├── Button.jsx
+│   │   │   │   ├── Button.module.css
+│   │   │   │   └── index.js
+│   │   │   ├── FormField/
+│   │   │   │   ├── FormField.jsx
+│   │   │   │   ├── FormField.module.css
+│   │   │   │   └── index.js
+│   │   │   └── FileUpload/
+│   │   │       ├── FileUpload.jsx
+│   │   │       ├── FileUpload.module.css
+│   │   │       └── index.js
+│   │   │
+│   │   ├── auth/
+│   │   │   ├── LoginForm/
+│   │   │   │   ├── LoginForm.jsx
+│   │   │   │   ├── LoginForm.module.css
+│   │   │   │   └── index.js
+│   │   │   ├── RegisterForm/
+│   │   │   │   ├── RegisterForm.jsx
+│   │   │   │   ├── RegisterForm.module.css
+│   │   │   │   └── index.js
+│   │   │   └── PasswordReset/
+│   │   │       ├── PasswordReset.jsx
+│   │   │       ├── PasswordReset.module.css
+│   │   │       └── index.js
+│   │   │
+│   │   ├── books/
+│   │   │   ├── BookCard/
+│   │   │   │   ├── BookCard.jsx
+│   │   │   │   ├── BookCard.module.css
+│   │   │   │   └── index.js
+│   │   │   ├── BookList/
+│   │   │   │   ├── BookList.jsx
+│   │   │   │   ├── BookList.module.css
+│   │   │   │   └── index.js
+│   │   │   ├── BookForm/
+│   │   │   │   ├── BookForm.jsx
+│   │   │   │   ├── BookForm.module.css
+│   │   │   │   └── index.js
+│   │   │   ├── BookDetails/
+│   │   │   │   ├── BookDetails.jsx
+│   │   │   │   ├── BookDetails.module.css
+│   │   │   │   └── index.js
+│   │   │   ├── BookFilters/
+│   │   │   │   ├── BookFilters.jsx
+│   │   │   │   ├── BookFilters.module.css
+│   │   │   │   └── index.js
+│   │   │   └── CategoryManager/
+│   │   │       ├── CategoryManager.jsx
+│   │   │       ├── CategoryManager.module.css
+│   │   │       └── index.js
+│   │   │
+│   │   ├── members/
+│   │   │   ├── MemberCard/
+│   │   │   │   ├── MemberCard.jsx
+│   │   │   │   ├── MemberCard.module.css
+│   │   │   │   └── index.js
+│   │   │   ├── MemberList/
+│   │   │   │   ├── MemberList.jsx
+│   │   │   │   ├── MemberList.module.css
+│   │   │   │   └── index.js
+│   │   │   ├── MemberForm/
+│   │   │   │   ├── MemberForm.jsx
+│   │   │   │   ├── MemberForm.module.css
+│   │   │   │   └── index.js
+│   │   │   ├── MemberProfile/
+│   │   │   │   ├── MemberProfile.jsx
+│   │   │   │   ├── MemberProfile.module.css
+│   │   │   │   └── index.js
+│   │   │   └── BorrowingHistory/
+│   │   │       ├── BorrowingHistory.jsx
+│   │   │       ├── BorrowingHistory.module.css
+│   │   │       └── index.js
+│   │   │
+│   │   ├── transactions/
+│   │   │   ├── IssueBookForm/
+│   │   │   │   ├── IssueBookForm.jsx
+│   │   │   │   ├── IssueBookForm.module.css
+│   │   │   │   └── index.js
+│   │   │   ├── ReturnBookForm/
+│   │   │   │   ├── ReturnBookForm.jsx
+│   │   │   │   ├── ReturnBookForm.module.css
+│   │   │   │   └── index.js
+│   │   │   ├── TransactionList/
+│   │   │   │   ├── TransactionList.jsx
+│   │   │   │   ├── TransactionList.module.css
+│   │   │   │   └── index.js
+│   │   │   └── ReservationManager/
+│   │   │       ├── ReservationManager.jsx
+│   │   │       ├── ReservationManager.module.css
+│   │   │       └── index.js
+│   │   │
+│   │   ├── fines/
+│   │   │   ├── FinesList/
+│   │   │   │   ├── FinesList.jsx
+│   │   │   │   ├── FinesList.module.css
+│   │   │   │   └── index.js
+│   │   │   └── FinePayment/
+│   │   │       ├── FinePayment.jsx
+│   │   │       ├── FinePayment.module.css
+│   │   │       └── index.js
+│   │   │
+│   │   ├── reports/
+│   │   │   ├── Dashboard/
+│   │   │   │   ├── Dashboard.jsx
+│   │   │   │   ├── Dashboard.module.css
+│   │   │   │   └── index.js
+│   │   │   ├── Charts/
+│   │   │   │   ├── BarChart/
+│   │   │   │   │   ├── BarChart.jsx
+│   │   │   │   │   └── index.js
+│   │   │   │   ├── PieChart/
+│   │   │   │   │   ├── PieChart.jsx
+│   │   │   │   │   └── index.js
+│   │   │   │   └── LineChart/
+│   │   │   │       ├── LineChart.jsx
+│   │   │   │       └── index.js
+│   │   │   ├── PopularBooks/
+│   │   │   │   ├── PopularBooks.jsx
+│   │   │   │   ├── PopularBooks.module.css
+│   │   │   │   └── index.js
+│   │   │   └── OverdueBooks/
+│   │   │       ├── OverdueBooks.jsx
+│   │   │       ├── OverdueBooks.module.css
+│   │   │       └── index.js
+│   │   │
+│   │   └── admin/
+│   │       ├── UserManagement/
+│   │       │   ├── UserManagement.jsx
+│   │       │   ├── UserManagement.module.css
+│   │       │   └── index.js
+│   │       ├── SystemSettings/
+│   │       │   ├── SystemSettings.jsx
+│   │       │   ├── SystemSettings.module.css
+│   │       │   └── index.js
+│   │       └── AdminReports/
+│   │           ├── AdminReports.jsx
+│   │           ├── AdminReports.module.css
+│   │           └── index.js
+│   │
+│   ├── pages/
+│   │   ├── auth/
+│   │   │   ├── LoginPage.jsx
+│   │   │   ├── RegisterPage.jsx
+│   │   │   └── ForgotPasswordPage.jsx
+│   │   ├── dashboard/
+│   │   │   ├── AdminDashboard.jsx
+│   │   │   ├── ManagerDashboard.jsx
+│   │   │   ├── LibrarianDashboard.jsx
+│   │   │   └── MemberDashboard.jsx
+│   │   ├── books/
+│   │   │   ├── BooksPage.jsx
+│   │   │   ├── BookDetailsPage.jsx
+│   │   │   ├── AddBookPage.jsx
+│   │   │   └── EditBookPage.jsx
+│   │   ├── members/
+│   │   │   ├── MembersPage.jsx
+│   │   │   ├── MemberDetailsPage.jsx
+│   │   │   ├── AddMemberPage.jsx
+│   │   │   └── EditMemberPage.jsx
+│   │   ├── transactions/
+│   │   │   ├── IssueBookPage.jsx
+│   │   │   ├── ReturnBookPage.jsx
+│   │   │   ├── TransactionsPage.jsx
+│   │   │   └── ReservationsPage.jsx
+│   │   ├── fines/
+│   │   │   └── FinesPage.jsx
+│   │   ├── reports/
+│   │   │   ├── ReportsPage.jsx
+│   │   │   ├── PopularBooksPage.jsx
+│   │   │   └── OverdueBooksPage.jsx
+│   │   ├── profile/
+│   │   │   └── ProfilePage.jsx
+│   │   ├── admin/
+│   │   │   ├── UserManagementPage.jsx
+│   │   │   └── SystemSettingsPage.jsx
+│   │   ├── NotFoundPage.jsx
+│   │   └── UnauthorizedPage.jsx
+│   │
+│   ├── hooks/
+│   │   ├── useAuth.js               # Authentication hook
+│   │   ├── useApi.js                # API calling hook
+│   │   ├── useDebounce.js           # Debounce hook for search
+│   │   ├── usePagination.js         # Pagination hook
+│   │   ├── useModal.js              # Modal management hook
+│   │   ├── useLocalStorage.js       # Local storage hook
+│   │   └── usePermissions.js        # Role-based permissions hook
+│   │
+│   ├── context/
+│   │   ├── AuthContext.js           # Authentication context
+│   │   ├── ThemeContext.js          # Theme management context
+│   │   └── NotificationContext.js   # Notification context
+│   │
+│   ├── services/
+│   │   ├── api/
+│   │   │   ├── authApi.js           # Authentication API calls
+│   │   │   ├── booksApi.js          # Books API calls
+│   │   │   ├── membersApi.js        # Members API calls
+│   │   │   ├── transactionsApi.js   # Transactions API calls
+│   │   │   ├── finesApi.js          # Fines API calls
+│   │   │   ├── reportsApi.js        # Reports API calls
+│   │   │   └── adminApi.js          # Admin API calls
+│   │   ├── http.js                  # Axios configuration
+│   │   └── storage.js               # Local storage service
+│   │
+│   ├── utils/
+│   │   ├── constants.js             # Application constants
+│   │   ├── helpers.js               # Helper functions
+│   │   ├── validators.js            # Form validation utilities
+│   │   ├── formatters.js            # Data formatting utilities
+│   │   ├── dateUtils.js             # Date manipulation utilities
+│   │   ├── permissions.js           # Permission checking utilities
+│   │   └── errorHandler.js          # Error handling utilities
+│   │
+│   ├── styles/
+│   │   ├── globals.css              # Global styles
+│   │   ├── variables.css            # CSS variables
+│   │   ├── mixins.css               # CSS mixins
+│   │   ├── components.css           # Component-specific styles
+│   │   └── responsive.css           # Responsive design styles
+│   │
+│   ├── assets/
+│   │   ├── images/
+│   │   │   ├── icons/
+│   │   │   └── illustrations/
+│   │   └── fonts/
+│   │
+│   ├── App.js                       # Main App component
+│   ├── App.css                      # App-specific styles
+│   ├── index.js                     # React DOM entry point
+│   └── setupTests.js                # Test configuration
+│
+├── tests/
+│   ├── components/
+│   │   ├── common/
+│   │   ├── auth/
+│   │   ├── books/
+│   │   ├── members/
+│   │   └── transactions/
+│   ├── pages/
+│   ├── hooks/
+│   ├── utils/
+│   ├── fixtures/
+│   │   └── mockData.js
+│   └── setup.js
+│
+├── docs/
+│   ├── components/
+│   │   └── component_guide.md
+│   ├── deployment/
+│   │   └── build_guide.md
+│   └── user_guide/
+│       └── user_manual.md
+│
+├── .env.example                     # Environment variables template
+├── .env                            # Environment variables (gitignored)
+├── .env.development
+├── .env.production
+├── .gitignore
+├── package.json
+├── package-lock.json
+├── craco.config.js                  # Create React App configuration
+├── jest.config.js                   # Jest testing configuration
+└── README.md
