@@ -3,27 +3,21 @@ const express = require('express');
 const route = express.Router();
 
 
-
-
-
-
 const { addBook, fetchBooks, fetchSingleBook, updateBook, deleteBook } = require("../../controllers/book/book.controller");
 
 // Add New Book
 route.post("/", addBook);
 
-
-
 // View All Books
 route.get("/", fetchBooks);
 
 // View Single Book
-route.get("/:id", fetchSingleBook);
+route.get("/:isbn", fetchSingleBook);
 
 // Update Book
-route.patch("/", updateBook);
+route.patch("/:id", updateBook);
 
 // Delete Book
-route.delete("/", deleteBook)
+route.delete("/:id", deleteBook)
 
 module.exports = route;

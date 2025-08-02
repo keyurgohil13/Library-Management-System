@@ -9,7 +9,7 @@ module.exports = class BookServices {
         try {
             return await Book.create(body);
         } catch (error) {
-            console.log("Add Book Error : ", error);
+            console.log("Book Error : ", error);
             return errorResponse(StatusCodes.INTERNAL_SERVER_ERROR, true, MSG.SERVER_ERROR)
         }
     }
@@ -17,9 +17,9 @@ module.exports = class BookServices {
     // Fetch All Books
     async getFetchBooks() {
         try {
-            return await Book.find({ isDelete: false });
+            return await Book.find({ isDelete: false }).populate("category", "name description");
         } catch (error) {
-            console.log("Add Book Error : ", error);
+            console.log("Book Error : ", error);
             return errorResponse(StatusCodes.INTERNAL_SERVER_ERROR, true, MSG.SERVER_ERROR)
         }
     }
@@ -27,9 +27,19 @@ module.exports = class BookServices {
     // Fetch Single Book
     async getSingleBook(body) {
         try {
-            return await Book.findOne(body);
+            return await Book.findOne(body).populate("category", "name description");
         } catch (error) {
-            console.log("Add Book Error : ", error);
+            console.log("Book Error : ", error);
+            return errorResponse(StatusCodes.INTERNAL_SERVER_ERROR, true, MSG.SERVER_ERROR)
+        }
+    }
+
+    // Delete Book 
+    async deleteBook(body) {
+        try {
+            return await Book.findByIdAndUpdate(body, { isDelete: true });
+        } catch (error) {
+            console.log("Book Error : ", error);
             return errorResponse(StatusCodes.INTERNAL_SERVER_ERROR, true, MSG.SERVER_ERROR)
         }
     }

@@ -32,6 +32,7 @@ module.exports.MSG = {
     // Library system specific (Book)
     BOOK_ADDED: 'Book added successfully',
     BOOK_FETCHED: 'Book fetched successfully',
+    BOOK_SINGLE_FETCHED: 'Single Book fetched successfully',
     BOOK_NOT_FOUND: 'Book not found',
     BOOK_DELETED: 'Book deleted successfully',
     BOOK_UPDATED: 'Book updated successfully',
