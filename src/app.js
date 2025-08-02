@@ -20,5 +20,5 @@ app.listen(port, (err) => {
     console.log("Error : ", err);
     return false;
   }
-  console.log("Server is started....");
+  console.log(`http://127.0.0.1:${port} \nServer is started....`);
 });
