@@ -8,12 +8,8 @@ const { StatusCodes } = require("http-status-codes");
 const { MSG } = require("../../utils/messages");
 
 exports.registerUser = async (req, res) => {
-<<<<<<< HEAD
-  try { 
-=======
-  try {
 
->>>>>>> 5af7a528b5976915f55d0b5784d9a24356ee6860
+  try {
     const existUser = await userServices.getSingleUser({ email: req.body.email, isDelete: false });
     if(existUser){
         return res.json(errorResponse(StatusCodes.BAD_REQUEST, true, MSG.USER_EXIST));
