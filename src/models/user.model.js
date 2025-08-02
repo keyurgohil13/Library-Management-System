@@ -32,17 +32,15 @@ const userSchema = mongoose.Schema({
     membership_date: {
         type: String
     },
-<<<<<<< HEAD
     created_at: {
         type: String,
         require: true
-=======
-    created_at:{
+    },
+    created_at: {
         type: String
-    }, 
-    updated_at:{
+    },
+    updated_at: {
         type: String
->>>>>>> 711962e6bcd0ea9602dc540238af1ffd4e36fde7
     },
     updated_at: {
         type: String,
