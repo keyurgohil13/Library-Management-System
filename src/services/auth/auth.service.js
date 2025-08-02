@@ -33,4 +33,15 @@ module.exports = class UserServices {
             return errorResponse(StatusCodes.INTERNAL_SERVER_ERROR, true, MSG.SERVER_ERROR);
         }
     };
+
+     // Get All Users
+    async getAllUsers(query) {
+        try {
+            let condition = { ...query, isDelete: false };
+             return await User.find({...condition});
+        } catch (error) {
+            console.log(error);
+            return errorResponse(StatusCodes.INTERNAL_SERVER_ERROR, true, MSG.SERVER_ERROR);
+        }
+    }
 }

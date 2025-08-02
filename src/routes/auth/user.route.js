@@ -1,10 +1,13 @@
 const express = require('express');
-const { getProfile, changePassword, updateProfile } = require('../../controllers/auth/user.controller');
+const { getProfile, getAllUsers } = require('../../controllers/auth/user.controller');
+const { authRoleMiddleware } = require('../../middleware/auth.middleware');
 
 const userRoutes = express.Router();
 
+userRoutes.get('/',authRoleMiddleware(['Admin', 'Manager', 'Librarian']), getAllUsers);
 userRoutes.get("/profile", getProfile);
-userRoutes.put("/change-password", changePassword);
-userRoutes.put("/profile", updateProfile);
+
+
+
 
 module.exports = userRoutes;
