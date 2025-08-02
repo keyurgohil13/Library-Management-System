@@ -45,3 +45,13 @@ exports.updateProfile = async (req, res) => {
         return res.json(errorResponse(StatusCodes.BAD_REQUEST, true, MSG.SERVER_ERROR));
     }
 };
+
+exports.getAllUsers = async (req, res) => {
+     try {
+        let users = await userServices.getAllUsers(req.query)
+        return res.json(successResponse(StatusCodes.OK, false, MSG.SUCCESS, users));
+    } catch (error) {
+        console.log("Server Error: ", error);
+            return res.json(errorResponse(StatusCodes.BAD_REQUEST, true, MSG.SERVER_ERROR));
+    }
+}
