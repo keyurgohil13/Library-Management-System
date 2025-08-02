@@ -1,5 +1,5 @@
 module.exports.MSG = {
-   
+
     SUCCESS_LOGIN: 'Login successful',
     ERROR_LOGIN: 'Invalid credentials',
     UNAUTHORIZED: 'Unauthorized access',
@@ -31,15 +31,16 @@ module.exports.MSG = {
 
     // Library system specific (Book)
     BOOK_ADDED: 'Book added successfully',
+    BOOK_FETCHED: 'Book fetched successfully',
     BOOK_NOT_FOUND: 'Book not found',
     BOOK_DELETED: 'Book deleted successfully',
     BOOK_UPDATED: 'Book updated successfully',
-    BOOK_EXIST : 'Book already exist',
+    BOOK_EXIST: 'Book already exist',
 
     // Library system specific (Catagory)
     CATAGORY_ADDED: 'Catagory added successfully',
     CATAGORY_NOT_FOUND: 'Catagory not found',
     CATAGORY_DELETED: 'Catagory deleted successfully',
     CATAGORY_UPDATED: 'Catagory updated successfully',
-    CATAGORY_EXIST : 'Catagory already exist',
+    CATAGORY_EXIST: 'Catagory already exist',
 }

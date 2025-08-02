@@ -1,5 +1,6 @@
 const { StatusCodes } = require("http-status-codes");
 const { errorResponse } = require("../../utils/responseFormat");
+const { MSG } = require("../../utils/messages");
 const User = require("../../models/user.model");
 
 module.exports = class UserServices {
@@ -9,17 +10,17 @@ module.exports = class UserServices {
             return await User.create(body);
         } catch (error) {
             console.log(error);
-            return errorResponse(StatusCodes.INTERNAL_SERVER_ERROR, true, error.message);
+            return errorResponse(StatusCodes.INTERNAL_SERVER_ERROR, true, MSG.SERVER_ERROR);
         }
     };
-    
+
     // Single User finding
     async getSingleUser(body) {
         try {
             return await User.findOne(body);
         } catch (error) {
             console.log(error);
-            return errorResponse(StatusCodes.INTERNAL_SERVER_ERROR, true, error.message);
+            return errorResponse(StatusCodes.INTERNAL_SERVER_ERROR, true, MSG.SERVER_ERROR);
         }
     };
 }

@@ -3,9 +3,12 @@ const mongoose = require('mongoose');
 const bookSchema = new mongoose.Schema({
     title: String,
     author: String,
-    isbn: String,
+    isbn: {
+        type: String,
+        require: true
+    },
     category: {
-        type: mongoose.Schema.ObjectId.type,
+        type: mongoose.Schema.Types.ObjectId,
         ref: "category"
     },
     publisher: String,
@@ -18,11 +21,11 @@ const bookSchema = new mongoose.Schema({
     updated_at: String,
     is_active: {
         type: Boolean,
-        default: true
+        default: true,
     },
     isDelete: {
         type: Boolean,
-        default: false
+        default: false,
     }
 })
 

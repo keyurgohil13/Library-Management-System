@@ -1,24 +1,70 @@
-// Add New Book
-export const addBook = (req, res) => {
+const { StatusCodes } = require("http-status-codes");
+const BookServices = require("../../services/book/book.service");
+const { errorResponse, successResponse } = require("../../utils/responseFormat");
+const { MSG } = require("../../utils/messages");
 
+const moment = require("moment")
+const bookService = new BookServices();
+
+// Add New Book
+exports.addBook = async (req, res) => {
+    try {
+
+        const existBook = await bookService.getSingleBook({ isbn: req.body.isbn, isDelete: false });
+
+        if (existBook)
+            res.json(errorResponse(StatusCodes.BAD_REQUEST, true, MSG.BOOK_EXIST));
+
+        req.body.created_at = moment(Date.now()).format("DD-MM-YYYY");
+        req.body.updated_at = moment(Date.now()).format("DD-MM-YYYY");
+
+        let newBook = await bookService.addBook(req.body);
+
+        res.json(successResponse(StatusCodes.CREATED, false, MSG.BOOK_ADDED, newBook));
+    } catch (error) {
+        console.log("Server Error : ", error);
+        res.json(errorResponse(StatusCodes.BAD_REQUEST, true, MSG.SERVER_ERROR));
+    }
 }
 
 // Fetch All Books
-export const fetchBooks = (req, res) => {
+exports.fetchBooks = async (req, res) => {
+    try {
+        const allBooks = await bookService.getFetchBooks();
 
+        res.json(successResponse(StatusCodes.CREATED, false, MSG.BOOK_FETCHED, allBooks))
+    } catch (error) {
+        console.log("Server Error : ", error);
+        res.json(errorResponse(StatusCodes.BAD_REQUEST, true, MSG.SERVER_ERROR));
+    }
 }
 
 // Fetch Single Book
-export const fetchSingleBook = (req, res) => {
+exports.fetchSingleBook = async (req, res) => {
+    try {
 
+    } catch (error) {
+        console.log("Server Error : ", error);
+        res.json(errorResponse(StatusCodes.BAD_REQUEST, true, MSG.SERVER_ERROR));
+    }
 }
 
 // Update Book
-export const updateBook = (req, res) => {
+exports.updateBook = async (req, res) => {
+    try {
 
+    } catch (error) {
+        console.log("Server Error : ", error);
+        res.json(errorResponse(StatusCodes.BAD_REQUEST, true, MSG.SERVER_ERROR));
+    }
 }
 
 // Delete Book
-export const deleteBook = (req, res) => {
+exports.deleteBook = async (req, res) => {
+    try {
 
+    } catch (error) {
+        console.log("Server Error : ", error);
+        res.json(errorResponse(StatusCodes.BAD_REQUEST, true, MSG.SERVER_ERROR));
+    }
 }

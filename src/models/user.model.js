@@ -1,4 +1,4 @@
-const mongoose  = require('mongoose');
+const mongoose = require('mongoose');
 
 const userSchema = mongoose.Schema({
     email: {
@@ -32,19 +32,19 @@ const userSchema = mongoose.Schema({
     membership_date: {
         type: String
     },
-    created_at:{
-        type: String
-    }, 
-    updated_at:{
+    created_at: {
+        type: String,
+        require: true
+    },
+    created_at: {
         type: String
     },
-    created_by:{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'users'
-    }, 
-    updated_by:{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'users'
+    updated_at: {
+        type: String
+    },
+    updated_at: {
+        type: String,
+        require: true
     },
     is_active: {
         type: Boolean,
