@@ -4,7 +4,7 @@ const { errorResponse, successResponse } = require("../../utils/responseFormat")
 const { MSG } = require("../../utils/messages");
 
 const moment = require("moment")
-const bookService = BookServices();
+const bookService = new BookServices();
 
 // Add New Book
 export const addBook = async (req, res) => {
@@ -30,9 +30,9 @@ export const addBook = async (req, res) => {
 // Fetch All Books
 export const fetchBooks = async (req, res) => {
     try {
-        const allBooks = await bookService.fetchBooks();
+        const allBooks = await bookService.getFetchBooks();
 
-        res.json(succ)
+        res.json(successResponse(StatusCodes.CREATED, false, MSG.BOOK_FETCHED, allBooks))
     } catch (error) {
         console.log("Server Error : ", error);
         res.json(errorResponse(StatusCodes.BAD_REQUEST, true, MSG.SERVER_ERROR));
