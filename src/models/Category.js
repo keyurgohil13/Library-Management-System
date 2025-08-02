@@ -1,18 +1,18 @@
 const { default: mongoose } = require("mongoose");
 
 const categorySchema = new mongoose.Schema({
-    name:{
-        type:String,
-        require:true
+    name: {
+        type: String,
+        require: true
     },
-    description:{
-        type:String,
-        require:true
+    description: {
+        type: String,
+        require: true
     },
-     created_at:{
+    created_at: {
         type: String
-    }, 
-    updated_at:{
+    },
+    updated_at: {
         type: String
     },
     isDelete: {
@@ -21,4 +21,4 @@ const categorySchema = new mongoose.Schema({
     }
 })
 
-const Category = mongoose.model('category',categorySchema)
+const Category = mongoose.model('category', categorySchema)
