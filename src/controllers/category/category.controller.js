@@ -12,7 +12,7 @@ module.exports.createCategorys = async (req, res) => {
       error: true,
     });
   }
-};
+};  
 
 
 module.exports.getCategorys = async(req,res)=>{
