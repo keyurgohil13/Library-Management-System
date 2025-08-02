@@ -5,6 +5,7 @@ const { errorResponse, successPageResponse, successResponse } = require("../../u
 const userServices = new UserServices();
 const bcrypt = require('bcrypt');
 const { StatusCodes } = require("http-status-codes");
+const { MSG } = require("../../utils/messages");
 
 exports.registerUser = async (req, res) => {
   try {
@@ -20,10 +21,10 @@ exports.registerUser = async (req, res) => {
     req.body.membership_date = moment(Date.now()).format("DD-MM-YYYY");
     let newUser = await userServices.registerUser({...req.body, password: hashPassword});
 
-    return res.json(successResponse(StatusCodes.CREATED, false, 'New User Regiter', newUser))
+    return res.json(successResponse(StatusCodes.CREATED, false, MSG.REGISTER_USER, newUser))
 
   } catch (error) {
     console.log("Server Error: ", error);
-    return res.json(errorResponse(StatusCodes.BAD_REQUEST, true, 'User is Already Exist'));
+    return res.json(errorResponse(StatusCodes.BAD_REQUEST, true, MSG.INSTER_SERVER_ERROR));
   }
 };
