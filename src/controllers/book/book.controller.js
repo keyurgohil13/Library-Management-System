@@ -10,7 +10,7 @@ const bookService = new BookServices();
 exports.addBook = async (req, res) => {
     try {
 
-        const existBook = await bookService.getSingleBook({ isbn: req.body.isbn, isDelete: false });
+        const existBook = await bookService.getSingleBook({ isbn: req.body.isbn });
 
         if (existBook)
             return res.json(errorResponse(StatusCodes.BAD_REQUEST, true, MSG.BOOK_EXIST));
