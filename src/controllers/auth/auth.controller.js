@@ -11,8 +11,8 @@ exports.registerUser = async (req, res) => {
   try {
 
     const existUser = await userServices.getSingleUser({ email: req.body.email, isDelete: false });
-    if(existUser){
-        return res.json(errorResponse(StatusCodes.BAD_REQUEST, true, MSG.USER_EXIST));
+    if (existUser) {
+      return res.json(errorResponse(StatusCodes.BAD_REQUEST, true, MSG.USER_EXIST));
     }
 
     let hashPassword = await bcrypt.hash(req.body.password, 10);

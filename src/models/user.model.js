@@ -1,4 +1,4 @@
-const mongoose  = require('mongoose');
+const mongoose = require('mongoose');
 
 const userSchema = mongoose.Schema({
     email: {
@@ -40,19 +40,19 @@ const userSchema = mongoose.Schema({
         type: String,
         require: true
     },
-    created_at:{
-        type: String,
-        require: true
-    }, 
-    updated_at:{
+    created_at: {
         type: String,
         require: true
     },
-    created_by:{
+    updated_at: {
+        type: String,
+        require: true
+    },
+    created_by: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'users'
-    }, 
-    updated_by:{
+    },
+    updated_by: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'users'
     },
