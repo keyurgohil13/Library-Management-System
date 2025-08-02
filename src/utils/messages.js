@@ -34,10 +34,12 @@ module.exports.MSG = {
     BOOK_NOT_FOUND: 'Book not found',
     BOOK_DELETED: 'Book deleted successfully',
     BOOK_UPDATED: 'Book updated successfully',
+    BOOK_EXIST : 'Book already exist',
 
     // Library system specific (Catagory)
     CATAGORY_ADDED: 'Catagory added successfully',
     CATAGORY_NOT_FOUND: 'Catagory not found',
     CATAGORY_DELETED: 'Catagory deleted successfully',
     CATAGORY_UPDATED: 'Catagory updated successfully',
+    CATAGORY_EXIST : 'Catagory already exist',
 }
