@@ -1,13 +1,11 @@
-const { default: mongoose } = require("mongoose");
+const mongoose = require("mongoose");
 
 const categorySchema = new mongoose.Schema({
     name: {
         type: String,
-        require: true
     },
     description: {
         type: String,
-        require: true
     },
     created_at: {
         type: String
