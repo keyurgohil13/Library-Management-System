@@ -2,30 +2,24 @@ const mongoose = require('mongoose');
 
 const userSchema = mongoose.Schema({
     email: {
-        type: String,
-        require: true
+        type: String
     },
     password: {
-        type: String,
-        require: true
+        type: String
     },
     first_name: {
-        type: String,
-        require: true
+        type: String
     },
     last_name: {
-        type: String,
-        require: true
+        type: String
     },
     role: {
         type: String,
-        require: true,
         enum: ['Admin', 'Manager', 'Librarian', 'Member'],
         default: 'Member'
     },
     phone: {
-        type: String,
-        require: true
+        type: String
     },
     address: {
         line1: String,
@@ -33,16 +27,22 @@ const userSchema = mongoose.Schema({
         city: String,
         state: String,
         country: String,
-        pincode: Number,
-        require: true
+        pincode: Number
     },
     membership_date: {
-        type: String,
-        require: true
+        type: String
     },
+<<<<<<< HEAD
     created_at: {
         type: String,
         require: true
+=======
+    created_at:{
+        type: String
+    }, 
+    updated_at:{
+        type: String
+>>>>>>> 711962e6bcd0ea9602dc540238af1ffd4e36fde7
     },
     updated_at: {
         type: String,
@@ -58,13 +58,11 @@ const userSchema = mongoose.Schema({
     },
     is_active: {
         type: Boolean,
-        default: true,
-        require: true
+        default: true
     },
     isDelete: {
         type: Boolean,
-        default: false,
-        require: true
+        default: false
     }
 });
 

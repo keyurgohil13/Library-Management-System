@@ -6,4 +6,4 @@ router.get('/',getCategorys);
 router.post('/',createCategorys);
 
 
-module.exports = categoryRouter; 
+module.exports = router; 

@@ -1,15 +1,15 @@
 const moment = require("moment/moment");
-const User = require("../../models/user.model");
 const UserServices = require("../../services/auth/auth.service");
 const { errorResponse, successPageResponse, successResponse } = require("../../utils/responseFormat");
 const userServices = new UserServices();
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 const { StatusCodes } = require("http-status-codes");
 const { MSG } = require("../../utils/messages");
 
 exports.registerUser = async (req, res) => {
-  try {
 
+  try {
     const existUser = await userServices.getSingleUser({ email: req.body.email, isDelete: false });
     if (existUser) {
       return res.json(errorResponse(StatusCodes.BAD_REQUEST, true, MSG.USER_EXIST));
@@ -28,3 +28,26 @@ exports.registerUser = async (req, res) => {
     return res.json(errorResponse(StatusCodes.BAD_REQUEST, true, MSG.SERVER_ERROR));
   }
 };
+
+
+exports.loginUser = async(req, res) => {
+    try { 
+    const user = await userServices.getSingleUser({ email: req.body.email, isDelete: false });
+    if(!user){
+        return res.json(errorResponse(StatusCodes.NOT_FOUND, true, MSG.USER_NOT_FOUND));
+    }
+    let matchPassword = await bcrypt.compare(req.body.password, user.password)
+    if(!matchPassword){
+        return res.json(errorResponse(StatusCodes.BAD_REQUEST, true, MSG.ERROR_LOGIN))
+    }
+    let payload = {
+        userID: user._id
+    }
+    let token = jwt.sign(payload, process.env.JWT_SECRET);
+    return res.json(successResponse(StatusCodes.OK, false, MSG.SUCCESS_LOGIN, token))
+
+  } catch (error) {
+    console.log("Server Error: ", error);
+    return res.json(errorResponse(StatusCodes.BAD_REQUEST, true, MSG.SERVER_ERROR));
+  }
+}
