@@ -46,14 +46,6 @@ const userSchema = mongoose.Schema({
         type: String,
         require: true
     },
-    created_by: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'users'
-    },
-    updated_by: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'users'
-    },
     is_active: {
         type: Boolean,
         default: true
